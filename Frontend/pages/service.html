@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Services</title>
+
+    <link rel="stylesheet" href="css/services.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>BookEasy</h2>
+
+        <ul>
+          <li>Dashboard</li>
+          <li class="active">Services</li>
+          <li>Bookings</li>
+          <li>Customers</li>
+          <li>Profile</li>
+        </ul>
+      </aside>
+
+      <main class="content">
+        <div class="top">
+          <h1>Services</h1>
+
+          <button id="addServiceBtn">+ Add Service</button>
+        </div>
+
+        <div class="search">
+          <input
+            type="text"
+            placeholder="Search service..."
+            id="searchService"
+          />
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="serviceTable"></tbody>
+        </table>
+      </main>
+    </div>
+
+    <script src="js/services.js"></script>
+  </body>
+</html>

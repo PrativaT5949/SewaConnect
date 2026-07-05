@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Provider Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../assets/css/provider-dashboard.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container-fluid">
+        <span class="navbar-brand">SewaConnect</span>
+
+        <div>
+          <span id="providerName" class="text-white me-3"> Loading... </span>
+
+          <button class="btn btn-light btn-sm" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+      <h2>Provider Dashboard</h2>
+
+      <p>Welcome back!</p>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+
+    <script src="../assets/js/provider-dashboard.js"></script>
+  </body>
+</html>
