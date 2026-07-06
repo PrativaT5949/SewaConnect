@@ -12,6 +12,7 @@ class PaymentStatus(models.TextChoices):
 
 class PaymentGateway(models.TextChoices):
     KHALTI = "KHALTI", "Khalti"
+    ESEWA = "ESEWA", "eSewa"
 
 
 class Payment(models.Model):
@@ -40,6 +41,13 @@ class Payment(models.Model):
     )
 
     transaction_id = models.CharField(
+    max_length=255,
+    unique=True,
+    blank=True,
+    null=True,
+)
+
+    payment_reference = models.CharField(
         max_length=255,
         blank=True,
         null=True,
@@ -61,4 +69,4 @@ class Payment(models.Model):
     )
 
     def __str__(self):
-        return f"Payment #{self.id}"
+        return f"{self.transaction_id} - {self.status}"

@@ -1,21 +1,35 @@
 from django.urls import path
 
 from .views import (
-    CreatePaymentAPIView,
+    InitiatePaymentAPIView,
+    VerifyPaymentAPIView,
     PaymentHistoryAPIView,
+    PaymentDetailAPIView,
 )
 
 urlpatterns = [
 
     path(
-        "create/",
-        CreatePaymentAPIView.as_view(),
-        name="create-payment",
+        "initiate/",
+        InitiatePaymentAPIView.as_view(),
+        name="payment-initiate",
+    ),
+
+    path(
+        "verify/",
+        VerifyPaymentAPIView.as_view(),
+        name="payment-verify",
     ),
 
     path(
         "history/",
         PaymentHistoryAPIView.as_view(),
         name="payment-history",
+    ),
+
+    path(
+        "<int:pk>/",
+        PaymentDetailAPIView.as_view(),
+        name="payment-detail",
     ),
 ]
