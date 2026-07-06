@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Sign In — HomeFix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#2563EB;--primary-hover:#1D4ED8;--secondary:#10B981;--accent:#F59E0B;
+    --bg:#F8FAFC;--surface:#FFFFFF;--text-main:#1E293B;--text-secondary:#64748B;
+    --border:#E2E8F0;--success:#22C55E;--error:#EF4444;
+    --radius-md:16px;--radius-lg:24px;
+    --shadow-sm:0 1px 2px rgba(30,41,59,0.06);--shadow-md:0 8px 24px rgba(30,41,59,0.08);--shadow-lg:0 20px 48px rgba(30,41,59,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text-main);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;}
+  h1,h2,h3,h4,h5,h6{font-family:'Poppins',sans-serif;color:var(--text-main);margin:0;line-height:1.2;}
+  p{margin:0;color:var(--text-secondary);}
+  .btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;white-space:nowrap;}
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 24px rgba(37,99,235,0.28);}
+  .btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);}
+  .btn-full{width:100%;}
+
+  .mini-header{padding:24px 6vw;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;width:fit-content;}
+  .logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .logo-mark svg{width:20px;height:20px;}
+  .logo span{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--text-main);}
+  .logo span em{font-style:normal;color:var(--primary);}
+  .mini-header .switch{font-size:13.5px;color:var(--text-secondary);}
+  .mini-header .switch a{color:var(--primary);font-weight:600;}
+
+  .auth-shell{min-height:calc(100vh - 88px);display:grid;grid-template-columns:1fr 1fr;}
+  .auth-visual{
+    background:linear-gradient(160deg,#1E293B 0%, #0f1729 100%);
+    position:relative;overflow:hidden;padding:64px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;
+  }
+  .auth-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%, rgba(37,99,235,0.28), transparent 55%);}
+  .auth-visual > *{position:relative;z-index:1;}
+  .auth-visual .eyebrow{display:inline-flex;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:999px;width:fit-content;}
+  .auth-visual h2{color:#fff;font-size:clamp(26px,3vw,36px);margin-top:20px;max-width:380px;}
+  .auth-visual p.sub{color:rgba(255,255,255,0.75);margin-top:14px;max-width:360px;font-size:15px;}
+
+  .job-card{
+    margin-top:36px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;padding:20px;display:flex;gap:14px;align-items:center;
+  }
+  .job-card .badge{width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .job-card .badge svg{width:22px;height:22px;color:var(--secondary);}
+  .job-card h4{color:#fff;font-size:14.5px;font-weight:600;}
+  .job-card p{color:rgba(255,255,255,0.7);font-size:13px;margin-top:3px;}
+
+  .trust-row{display:flex;gap:28px;margin-top:auto;}
+  .trust-row div strong{font-family:'Poppins',sans-serif;font-size:24px;display:block;color:#fff;}
+  .trust-row div p{color:rgba(255,255,255,0.65);font-size:12.5px;margin-top:4px;}
+
+  .auth-form-side{display:flex;align-items:center;justify-content:center;padding:48px 6vw;}
+  .auth-card{width:100%;max-width:420px;}
+  .auth-card .eyebrow{display:inline-flex;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--primary);background:rgba(37,99,235,0.08);padding:6px 14px;border-radius:999px;}
+  .auth-card h1{font-size:clamp(26px,3vw,32px);font-weight:700;margin-top:16px;}
+  .auth-card > p{margin-top:10px;font-size:14.5px;}
+  .auth-card > p a{color:var(--primary);font-weight:600;}
+
+  form{margin-top:32px;display:flex;flex-direction:column;gap:20px;}
+  .field-group{display:flex;flex-direction:column;gap:8px;}
+  .field-group label{font-family:'Poppins',sans-serif;font-weight:500;font-size:13.5px;}
+  .input-wrap{position:relative;}
+  .input-wrap svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text-secondary);}
+  .input-wrap input{
+    font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text-main);
+    padding:13px 16px 13px 44px;border-radius:10px;border:1.5px solid var(--border);
+    background:var(--surface);outline:none;transition:border-color .18s ease, box-shadow .18s ease;width:100%;
+  }
+  .input-wrap input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,0.12);}
+  .input-wrap input::placeholder{color:#94a3b8;}
+  .input-wrap .toggle-pass{position:absolute;left:auto;right:15px;cursor:pointer;background:none;padding:0;width:18px;height:18px;top:50%;transform:translateY(-50%);}
+
+  .row-between{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;}
+  .remember{display:flex;align-items:center;gap:8px;}
+  .remember input{width:16px;height:16px;accent-color:var(--primary);}
+  .row-between a{color:var(--primary);font-weight:600;}
+
+  .otp-note{
+    display:flex;gap:10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);
+    border-radius:10px;padding:12px 14px;
+  }
+  .otp-note svg{width:17px;height:17px;color:var(--secondary);flex-shrink:0;margin-top:1px;}
+  .otp-note p{font-size:12.5px;color:var(--text-main);}
+
+  .bottom-link{margin-top:28px;text-align:center;font-size:14.5px;}
+  .bottom-link a{color:var(--primary);font-weight:600;}
+  .status-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--secondary);font-weight:600;background:rgba(16,185,129,0.1);padding:5px 12px;border-radius:999px;margin-top:18px;}
+  .status-pill svg{width:12px;height:12px;}
+
+  @media (max-width:920px){
+    .auth-shell{grid-template-columns:1fr;}
+    .auth-visual{display:none;}
+    .auth-form-side{padding:24px 6vw 64px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="mini-header">
+  <a href="index.html" class="logo">
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11L12 3L21 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10V20C5 20.5523 5.44772 21 6 21H9V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21H18C18.5523 21 19 20.5523 19 20V10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>Home<em>Fix</em> <span style="font-size:12px;color:var(--text-secondary);font-weight:500;">Pro</span></span>
+  </a>
+  <p class="switch">Booking a service instead? <a href="login.html">Customer sign in</a></p>
+</div>
+
+<div class="auth-shell">
+  <div class="auth-visual">
+    <div>
+      <span class="eyebrow">Professional portal</span>
+      <h2>Manage your jobs, schedule, and payouts</h2>
+      <p class="sub">Sign in to view new job requests, message customers, and track your earnings in one place.</p>
+
+      <div class="job-card">
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>3 new job requests waiting</h4>
+          <p>Respond within 30 minutes to boost your ranking</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div><strong>12K+</strong><p>Active professionals</p></div>
+      <div><strong>4.9/5</strong><p>Average pro rating</p></div>
+      <div><strong>$2.1K</strong><p>Avg. monthly earnings</p></div>
+    </div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <span class="eyebrow">Pro sign in</span>
+      <h1>Welcome back, pro</h1>
+      <p>Not registered yet? <a href="pro-register.html">Apply as a professional</a></p>
+
+      <form>
+        <div class="field-group">
+          <label>Email or license ID</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke-linejoin="round"/><path d="M4 6l8 7 8-7" stroke-linejoin="round"/></svg>
+            <input type="text" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+            <input type="password" id="passInput" placeholder="Enter your password" required>
+            <button type="button" class="toggle-pass" id="togglePass" aria-label="Show password">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="row-between">
+          <label class="remember"><input type="checkbox"> Remember this device</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <div class="otp-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p>For your security, we may send a one-time code to your registered phone if we notice a sign-in from a new device.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Sign in</button>
+      </form>
+
+      <div class="status-pill"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Verified professionals only</div>
+
+      <p class="bottom-link">Application under review? <a href="#">Check your status</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const togglePass = document.getElementById('togglePass');
+  const passInput = document.getElementById('passInput');
+  togglePass.addEventListener('click', () => {
+    passInput.type = passInput.type === 'password' ? 'text' : 'password';
+  });
+</script>
+</body>
+</html>

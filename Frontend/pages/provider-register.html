@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register as a Professional — HomeFix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#2563EB;--primary-hover:#1D4ED8;--secondary:#10B981;--accent:#F59E0B;
+    --bg:#F8FAFC;--surface:#FFFFFF;--text-main:#1E293B;--text-secondary:#64748B;
+    --border:#E2E8F0;--success:#22C55E;--error:#EF4444;
+    --radius-md:16px;--radius-lg:24px;
+    --shadow-sm:0 1px 2px rgba(30,41,59,0.06);--shadow-md:0 8px 24px rgba(30,41,59,0.08);--shadow-lg:0 20px 48px rgba(30,41,59,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text-main);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  h1,h2,h3,h4,h5,h6{font-family:'Poppins',sans-serif;color:var(--text-main);margin:0;line-height:1.2;}
+  p{margin:0;color:var(--text-secondary);}
+  .btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;white-space:nowrap;cursor:pointer;}
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 24px rgba(37,99,235,0.28);}
+  .btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);}
+  .btn-primary:disabled{opacity:0.55;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-outline{background:transparent;color:var(--text-main);border:1.5px solid var(--border);}
+  .btn-outline:hover{border-color:var(--primary);color:var(--primary);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--secondary);background:rgba(16,185,129,0.1);padding:6px 14px;border-radius:999px;}
+
+  /* MINI HEADER */
+  .mini-header{padding:22px 6vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--surface);}
+  .logo{display:flex;align-items:center;gap:10px;width:fit-content;}
+  .logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .logo-mark svg{width:20px;height:20px;}
+  .logo span{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--text-main);}
+  .logo span em{font-style:normal;color:var(--primary);}
+  .mini-header .helper{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text-secondary);}
+  .mini-header .helper a{color:var(--primary);font-weight:600;}
+
+  /* SECURITY STRIP */
+  .security-strip{background:#0f2544;padding:11px 6vw;display:flex;align-items:center;justify-content:center;gap:10px;}
+  .security-strip p{color:#cbd5e1;font-size:13px;}
+  .security-strip svg{width:15px;height:15px;color:var(--secondary);flex-shrink:0;}
+
+  /* PAGE LAYOUT */
+  .page{max-width:900px;margin:0 auto;padding:52px 6vw 100px;}
+  .page-intro{text-align:center;max-width:560px;margin:0 auto 40px;}
+  .page-intro h1{font-size:clamp(26px,3.4vw,36px);font-weight:800;margin-top:16px;}
+  .page-intro p{margin-top:12px;font-size:15.5px;}
+
+  /* STEPPER */
+  .stepper{display:flex;align-items:center;justify-content:center;margin-bottom:44px;gap:0;}
+  .step{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;flex:1;max-width:150px;}
+  .step .dot{
+    width:38px;height:38px;border-radius:50%;background:var(--surface);border:2px solid var(--border);
+    display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--text-secondary);
+    transition:.25s ease;z-index:1;
+  }
+  .step .label{font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;color:var(--text-secondary);text-align:center;}
+  .step .line{position:absolute;top:19px;left:calc(-50% + 19px);width:calc(100% - 38px);height:2px;background:var(--border);z-index:0;}
+  .step:first-child .line{display:none;}
+  .step.active .dot{background:var(--primary);border-color:var(--primary);color:#fff;}
+  .step.active .label{color:var(--primary);}
+  .step.done .dot{background:var(--secondary);border-color:var(--secondary);color:#fff;}
+  .step.done .line{background:var(--secondary);}
+
+  /* FORM CARD */
+  .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:44px;box-shadow:var(--shadow-sm);}
+  .form-card h3{font-size:20px;font-weight:700;}
+  .form-card .step-sub{font-size:14px;margin-top:6px;}
+  .form-panel{display:none;}
+  .form-panel.active{display:block;}
+
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px;}
+  .form-grid .full{grid-column:1/-1;}
+  .field-group{display:flex;flex-direction:column;gap:8px;}
+  .field-group label{font-family:'Poppins',sans-serif;font-weight:500;font-size:13.5px;}
+  .field-group label .opt{color:var(--text-secondary);font-weight:400;}
+  .field-group input,.field-group select,.field-group textarea{
+    font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text-main);
+    padding:13px 16px;border-radius:10px;border:1.5px solid var(--border);
+    background:var(--bg);outline:none;transition:border-color .18s ease, box-shadow .18s ease;width:100%;
+  }
+  .field-group input:focus,.field-group select:focus,.field-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,0.12);background:#fff;}
+  .field-group input::placeholder{color:#94a3b8;}
+  .hint{font-size:12.5px;color:var(--text-secondary);}
+
+  .pass-strength{display:flex;gap:5px;margin-top:2px;}
+  .pass-strength span{height:4px;flex:1;border-radius:3px;background:var(--border);}
+
+  /* SERVICE CATEGORY CHIPS */
+  .chip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:10px;}
+  .chip{
+    border:1.5px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:8px;transition:.18s ease;background:var(--bg);
+  }
+  .chip svg{width:22px;height:22px;color:var(--text-secondary);}
+  .chip span{font-family:'Poppins',sans-serif;font-weight:500;font-size:12.5px;}
+  .chip input{display:none;}
+  .chip.checked{border-color:var(--primary);background:rgba(37,99,235,0.06);}
+  .chip.checked svg,.chip.checked span{color:var(--primary);}
+
+  /* UPLOAD DROPZONES */
+  .upload-box{
+    border:1.5px dashed var(--border);border-radius:14px;padding:26px;text-align:center;
+    background:var(--bg);cursor:pointer;transition:.18s ease;
+  }
+  .upload-box:hover{border-color:var(--primary);background:rgba(37,99,235,0.04);}
+  .upload-box.filled{border-style:solid;border-color:var(--secondary);background:rgba(16,185,129,0.05);}
+  .upload-box svg{width:26px;height:26px;color:var(--text-secondary);margin:0 auto 10px;}
+  .upload-box.filled svg{color:var(--secondary);}
+  .upload-box h5{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--text-main);}
+  .upload-box p{font-size:12.5px;margin-top:4px;}
+  .upload-box input{display:none;}
+  .upload-status{font-size:12.5px;color:var(--secondary);font-weight:600;margin-top:8px;display:none;}
+  .upload-box.filled .upload-status{display:block;}
+
+  .verify-note{
+    display:flex;gap:12px;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.16);
+    border-radius:12px;padding:16px 18px;margin-top:24px;
+  }
+  .verify-note svg{width:20px;height:20px;color:var(--primary);flex-shrink:0;margin-top:1px;}
+  .verify-note p{font-size:13px;color:var(--text-main);}
+  .verify-note strong{font-weight:600;}
+
+  /* REVIEW STEP */
+  .review-block{border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-top:18px;}
+  .review-block h5{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:space-between;}
+  .review-block h5 a{font-size:12.5px;color:var(--primary);font-weight:600;}
+  .review-block dl{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin:14px 0 0;}
+  .review-block dt{font-size:12px;color:var(--text-secondary);}
+  .review-block dd{margin:2px 0 0;font-size:13.5px;font-weight:500;color:var(--text-main);}
+
+  .form-note{display:flex;align-items:flex-start;gap:10px;margin-top:20px;}
+  .form-note input{width:16px;height:16px;margin-top:3px;accent-color:var(--primary);flex-shrink:0;}
+  .form-note p{font-size:13px;}
+  .form-note p a{color:var(--primary);font-weight:600;}
+
+  .form-nav{display:flex;align-items:center;justify-content:space-between;margin-top:36px;}
+  .form-nav .spacer{flex:1;}
+
+  .bottom-link{margin-top:28px;text-align:center;font-size:14.5px;}
+  .bottom-link a{color:var(--primary);font-weight:600;}
+
+  @media (max-width:760px){
+    .form-card{padding:26px;}
+    .form-grid{grid-template-columns:1fr;}
+    .chip-grid{grid-template-columns:repeat(2,1fr);}
+    .review-block dl{grid-template-columns:1fr;}
+    .step .label{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="mini-header">
+  <a href="index.html" class="logo">
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11L12 3L21 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10V20C5 20.5523 5.44772 21 6 21H9V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21H18C18.5523 21 19 20.5523 19 20V10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>Home<em>Fix</em> <span style="font-size:12px;color:var(--text-secondary);font-weight:500;">Pro</span></span>
+  </a>
+  <div class="helper">
+    Already a HomeFix pro? <a href="pro-login.html">Sign in</a>
+  </div>
+</div>
+
+<div class="security-strip">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <p>Your information and documents are encrypted in transit and reviewed only by our verification team.</p>
+</div>
+
+<div class="page">
+  <div class="page-intro">
+    <span class="eyebrow">Become a HomeFix professional</span>
+    <h1>Register as a service provider</h1>
+    <p>Join our network of plumbers, electricians and skilled trades. We verify every applicant's license and identity before they can accept jobs.</p>
+  </div>
+
+  <div class="stepper">
+    <div class="step active" data-step="1">
+      <div class="line"></div>
+      <div class="dot">1</div>
+      <div class="label">Your details</div>
+    </div>
+    <div class="step" data-step="2">
+      <div class="line"></div>
+      <div class="dot">2</div>
+      <div class="label">Trade &amp; experience</div>
+    </div>
+    <div class="step" data-step="3">
+      <div class="line"></div>
+      <div class="dot">3</div>
+      <div class="label">Verification</div>
+    </div>
+    <div class="step" data-step="4">
+      <div class="line"></div>
+      <div class="dot">4</div>
+      <div class="label">Review &amp; submit</div>
+    </div>
+  </div>
+
+  <form id="proForm">
+    <div class="form-card">
+
+      <!-- STEP 1 -->
+      <div class="form-panel active" data-panel="1">
+        <h3>Your details</h3>
+        <p class="step-sub">This is how customers and our verification team will identify you.</p>
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Full legal name</label>
+            <input type="text" name="fullName" placeholder="As it appears on your ID" required>
+          </div>
+          <div class="field-group">
+            <label>Date of birth</label>
+            <input type="date" name="dob" required>
+          </div>
+          <div class="field-group">
+            <label>Email address</label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field-group">
+            <label>Phone number</label>
+            <input type="tel" name="phone" placeholder="+1 (555) 000-0000" required>
+          </div>
+          <div class="field-group full">
+            <label>Home address</label>
+            <input type="text" name="address" placeholder="Street, city, state, ZIP" required>
+          </div>
+          <div class="field-group">
+            <label>Create password</label>
+            <input type="password" name="password" id="passInput" placeholder="Min. 8 characters" required>
+            <div class="pass-strength"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="field-group">
+            <label>Confirm password</label>
+            <input type="password" name="confirmPassword" placeholder="Re-enter password" required>
+          </div>
+        </div>
+
+        <div class="form-note">
+          <input type="checkbox" id="twoFactor">
+          <p>Enable two-step verification via SMS at login for added account security (recommended).</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-panel" data-panel="2">
+        <h3>Trade &amp; experience</h3>
+        <p class="step-sub">Select your primary trade so we can match you with the right jobs.</p>
+
+        <div class="chip-grid">
+          <label class="chip"><input type="radio" name="trade" value="Plumbing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22c4-3 7-6.5 7-11a7 7 0 10-14 0c0 4.5 3 8 7 11z"/></svg><span>Plumbing</span></label>
+          <label class="chip"><input type="radio" name="trade" value="Electrical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg><span>Electrical</span></label>
+          <label class="chip"><input type="radio" name="trade" value="Carpentry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg><span>Carpentry</span></label>
+          <label class="chip"><input type="radio" name="trade" value="HVAC"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 21h8M12 16v5"/></svg><span>HVAC</span></label>
+          <label class="chip"><input type="radio" name="trade" value="Painting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v16"/></svg><span>Painting</span></label>
+          <label class="chip"><input type="radio" name="trade" value="Appliance Repair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg><span>Appliance</span></label>
+          <label class="chip"><input type="radio" name="trade" value="Cleaning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16h16M6 16V9a6 6 0 0112 0v7M9 20h6"/></svg><span>Cleaning</span></label>
+          <label class="chip"><input type="radio" name="trade" value="Pest Control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a6 6 0 016 6c0 4-6 12-6 12S6 13 6 9a6 6 0 016-6z"/></svg><span>Pest Control</span></label>
+        </div>
+
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Years of experience</label>
+            <select name="experience" required>
+              <option value="">Select range</option>
+              <option>Less than 1 year</option>
+              <option>1–3 years</option>
+              <option>4–7 years</option>
+              <option>8–15 years</option>
+              <option>15+ years</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Primary service area</label>
+            <input type="text" name="serviceArea" placeholder="City or ZIP codes covered" required>
+          </div>
+          <div class="field-group">
+            <label>Trade license number</label>
+            <input type="text" name="licenseNumber" placeholder="e.g. PL-2024-08831" required>
+          </div>
+          <div class="field-group">
+            <label>Issuing state / authority</label>
+            <input type="text" name="issuingAuthority" placeholder="e.g. California State Board" required>
+          </div>
+          <div class="field-group">
+            <label>License expiry date</label>
+            <input type="date" name="licenseExpiry" required>
+          </div>
+          <div class="field-group">
+            <label>Liability insurance provider <span class="opt">(optional)</span></label>
+            <input type="text" name="insuranceProvider" placeholder="Provider name">
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="form-panel" data-panel="3">
+        <h3>Verification documents</h3>
+        <p class="step-sub">Upload clear photos or scans. All files are reviewed manually before your profile goes live.</p>
+
+        <div class="form-grid">
+          <div class="field-group full">
+            <label>Trade license or certification</label>
+            <label class="upload-box" data-upload>
+              <input type="file" accept=".pdf,.jpg,.jpeg,.png" data-target="cert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <h5>Upload certification</h5>
+              <p>PDF, JPG or PNG · Max 10MB</p>
+              <p class="upload-status" data-status="cert">✓ File selected</p>
+            </label>
+          </div>
+
+          <div class="field-group">
+            <label>Government-issued ID (front)</label>
+            <label class="upload-box" data-upload>
+              <input type="file" accept=".jpg,.jpeg,.png,.pdf" data-target="idFront">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="1.8"/><path d="M13 9h5M13 13h5" stroke-linecap="round"/></svg>
+              <h5>ID front</h5>
+              <p>Driver's license or passport</p>
+              <p class="upload-status" data-status="idFront">✓ File selected</p>
+            </label>
+          </div>
+
+          <div class="field-group">
+            <label>Government-issued ID (back)</label>
+            <label class="upload-box" data-upload>
+              <input type="file" accept=".jpg,.jpeg,.png,.pdf" data-target="idBack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M6 9h12M6 13h8" stroke-linecap="round"/></svg>
+              <h5>ID back</h5>
+              <p>Same document as above</p>
+              <p class="upload-status" data-status="idBack">✓ File selected</p>
+            </label>
+          </div>
+
+          <div class="field-group full">
+            <label>Proof of insurance <span class="opt">(optional, speeds up approval)</span></label>
+            <label class="upload-box" data-upload>
+              <input type="file" accept=".pdf,.jpg,.jpeg,.png" data-target="insurance">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/></svg>
+              <h5>Upload insurance document</h5>
+              <p>PDF, JPG or PNG · Max 10MB</p>
+              <p class="upload-status" data-status="insurance">✓ File selected</p>
+            </label>
+          </div>
+        </div>
+
+        <div class="verify-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
+          <p><strong>What happens next:</strong> our team cross-checks your license number with the issuing authority and confirms your identity. Most applications are reviewed within 2–3 business days, and we'll email you the outcome.</p>
+        </div>
+
+        <div class="form-note">
+          <input type="checkbox" id="bgCheck" required>
+          <p>I consent to HomeFix performing a background check and verifying my license and identity with the relevant authorities.</p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="form-panel" data-panel="4">
+        <h3>Review &amp; submit</h3>
+        <p class="step-sub">Double check your details before submitting your application.</p>
+
+        <div class="review-block">
+          <h5>Your details <a data-goto="1">Edit</a></h5>
+          <dl>
+            <div><dt>Full name</dt><dd data-review="fullName">—</dd></div>
+            <div><dt>Email</dt><dd data-review="email">—</dd></div>
+            <div><dt>Phone</dt><dd data-review="phone">—</dd></div>
+            <div><dt>Address</dt><dd data-review="address">—</dd></div>
+          </dl>
+        </div>
+
+        <div class="review-block">
+          <h5>Trade &amp; experience <a data-goto="2">Edit</a></h5>
+          <dl>
+            <div><dt>Trade</dt><dd data-review="trade">—</dd></div>
+            <div><dt>Experience</dt><dd data-review="experience">—</dd></div>
+            <div><dt>Service area</dt><dd data-review="serviceArea">—</dd></div>
+            <div><dt>License number</dt><dd data-review="licenseNumber">—</dd></div>
+          </dl>
+        </div>
+
+        <div class="review-block">
+          <h5>Documents <a data-goto="3">Edit</a></h5>
+          <dl>
+            <div><dt>Certification</dt><dd data-review-file="cert">Not uploaded</dd></div>
+            <div><dt>ID front</dt><dd data-review-file="idFront">Not uploaded</dd></div>
+            <div><dt>ID back</dt><dd data-review-file="idBack">Not uploaded</dd></div>
+            <div><dt>Insurance</dt><dd data-review-file="insurance">Not uploaded</dd></div>
+          </dl>
+        </div>
+
+        <div class="form-note">
+          <input type="checkbox" id="termsFinal" required>
+          <p>I confirm the information provided is accurate and I agree to HomeFix's <a href="#">Professional Terms</a> and <a href="#">Privacy Policy</a>.</p>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="btn btn-outline" id="prevBtn" style="visibility:hidden;">Back</button>
+        <div class="spacer"></div>
+        <button type="button" class="btn btn-primary" id="nextBtn">Continue</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="display:none;">Submit application</button>
+      </div>
+    </div>
+  </form>
+
+  <p class="bottom-link">Looking to book a service instead? <a href="register.html">Create a customer account</a></p>
+</div>
+
+<script>
+  const panels = document.querySelectorAll('.form-panel');
+  const steps = document.querySelectorAll('.step');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  let current = 1;
+  const total = panels.length;
+
+  function renderStep(){
+    panels.forEach(p => p.classList.toggle('active', Number(p.dataset.panel) === current));
+    steps.forEach(s => {
+      const n = Number(s.dataset.step);
+      s.classList.toggle('active', n === current);
+      s.classList.toggle('done', n < current);
+    });
+    prevBtn.style.visibility = current === 1 ? 'hidden' : 'visible';
+    nextBtn.style.display = current === total ? 'none' : 'inline-flex';
+    submitBtn.style.display = current === total ? 'inline-flex' : 'none';
+    if(current === total) populateReview();
+    window.scrollTo({top: document.querySelector('.form-card').offsetTop - 30, behavior:'smooth'});
+  }
+
+  function populateReview(){
+    const form = document.getElementById('proForm');
+    const data = new FormData(form);
+    document.querySelectorAll('[data-review]').forEach(el => {
+      const key = el.dataset.review;
+      const val = data.get(key);
+      el.textContent = val ? val : '—';
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    const activePanel = document.querySelector('.form-panel.active');
+    const requiredFields = activePanel.querySelectorAll('[required]');
+    for (const f of requiredFields){
+      if(!f.checkValidity()){ f.reportValidity(); return; }
+    }
+    if(current < total){ current++; renderStep(); }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if(current > 1){ current--; renderStep(); }
+  });
+
+  document.querySelectorAll('[data-goto]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      current = Number(a.dataset.goto);
+      renderStep();
+    });
+  });
+
+  // Trade chip selection
+  document.querySelectorAll('.chip input').forEach(input => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('checked'));
+      input.closest('.chip').classList.add('checked');
+    });
+  });
+
+  // Upload boxes
+  document.querySelectorAll('[data-upload]').forEach(box => {
+    const input = box.querySelector('input[type="file"]');
+    input.addEventListener('change', () => {
+      const target = input.dataset.target;
+      const filled = input.files && input.files.length > 0;
+      box.classList.toggle('filled', filled);
+      const reviewEl = document.querySelector(`[data-review-file="${target}"]`);
+      if(reviewEl) reviewEl.textContent = filled ? input.files[0].name : 'Not uploaded';
+    });
+  });
+
+  // Password strength
+  const passInput = document.getElementById('passInput');
+  const bars = document.querySelectorAll('.pass-strength span');
+  const colors = ['#EF4444','#F59E0B','#F59E0B','#22C55E'];
+  passInput.addEventListener('input', () => {
+    const val = passInput.value;
+    let score = 0;
+    if (val.length > 5) score++;
+    if (val.length > 9) score++;
+    if (/[A-Z]/.test(val) && /[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    bars.forEach((bar, i) => {
+      bar.style.background = i < score ? colors[Math.min(score-1,3)] : '#E2E8F0';
+    });
+  });
+
+  document.getElementById('proForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Application submitted. Our team will review your documents and email you within 2–3 business days.');
+  });
+
+  renderStep();
+</script>
+</body>
+</html>
