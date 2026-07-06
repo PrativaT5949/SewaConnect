@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
@@ -16,6 +17,8 @@
   --shadow-sm: 0 1px 2px rgba(30, 41, 59, 0.06);
   --shadow-md: 0 8px 24px rgba(30, 41, 59, 0.08);
   --shadow-lg: 0 20px 48px rgba(30, 41, 59, 0.14);
+  --primary-font:"Poppins", sans-serif;
+  --secondary-font: "Inter", sans-serif;
 }
 
 * {
@@ -28,7 +31,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text-main);
-  font-family: "Inter", sans-serif;
+  font-family: var(--secondary-font);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -56,7 +59,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   color: var(--text-main);
   margin: 0;
   line-height: 1.2;
@@ -74,7 +77,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.08em;
@@ -108,7 +111,7 @@ p {
 }
 
 .btn {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 15px;
   padding: 14px 28px;
@@ -204,7 +207,7 @@ p {
   height: 20px;
 }
 .logo span {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 700;
   font-size: 20px;
   color: var(--text-main);
@@ -223,7 +226,7 @@ p {
   padding: 0;
 }
 .primary-nav ul li a {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 500;
   font-size: 14.5px;
   color: var(--text-main);
@@ -353,7 +356,7 @@ p {
 .hero-search .field input {
   border: none;
   outline: none;
-  font-family: "Inter", sans-serif;
+  font-family: var(--secondary-font);
   font-size: 14.5px;
   width: 100%;
   background: transparent;
@@ -394,7 +397,7 @@ p {
 }
 .hero-trust .trust-text strong {
   color: var(--text-main);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-size: 14.5px;
 }
 .stars-row {
@@ -502,7 +505,7 @@ p {
   color: var(--text-secondary);
 }
 .float-card.booking .val {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 14px;
   color: var(--text-main);
@@ -512,7 +515,7 @@ p {
   padding: 12px 16px;
 }
 .float-card.rating .val {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 700;
   font-size: 18px;
 }
@@ -557,7 +560,7 @@ p {
   padding: 12px;
 }
 .counter-item .num {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 700;
   font-size: clamp(30px, 3.4vw, 44px);
   display: flex;
@@ -632,7 +635,7 @@ p {
   font-size: 12.5px;
   color: var(--primary);
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
 }
 
 /* ===== FEATURED ===== */
@@ -690,7 +693,7 @@ p {
   align-self: flex-start;
   background: rgba(255, 255, 255, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 11.5px;
   padding: 5px 12px;
@@ -717,7 +720,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 14px;
   color: #fff;
@@ -775,6 +778,11 @@ p {
 .service-card:nth-child(4n + 4) .service-thumb {
   background: linear-gradient(145deg, #475569, #1e293b);
 }
+.service-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .service-rating {
   position: absolute;
   top: 12px;
@@ -785,7 +793,7 @@ p {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 700;
   font-size: 12.5px;
   color: var(--text-main);
@@ -814,13 +822,13 @@ p {
   margin-top: 16px;
 }
 .service-price {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 700;
   font-size: 17px;
   color: var(--text-main);
 }
 .service-price span {
-  font-family: "Inter", sans-serif;
+  font-family: var(--secondary-font);
   font-weight: 400;
   font-size: 12px;
   color: var(--text-secondary);
@@ -852,7 +860,7 @@ p {
   box-shadow: var(--shadow-sm);
 }
 .testi-card .quote-mark {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-size: 50px;
   color: var(--primary);
   opacity: 0.18;
@@ -863,7 +871,7 @@ p {
   color: var(--text-main);
   margin-top: 6px;
   line-height: 1.65;
-  font-family: "Inter", sans-serif;
+  font-family: var(--secondary-font);
 }
 .testi-person {
   display: flex;
@@ -879,7 +887,7 @@ p {
   background: linear-gradient(135deg, var(--secondary), var(--primary));
 }
 .testi-person strong {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-size: 15px;
 }
 .testi-person .stars-row {
@@ -1285,7 +1293,7 @@ p {
 .mobile-panel ul li a {
   display: block;
   padding: 14px 6px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 500;
   font-size: 17px;
   border-bottom: 1px solid var(--border);
