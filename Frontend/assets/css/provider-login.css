@@ -1,0 +1,369 @@
+.mini-header {
+  padding: 24px 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-mark svg {
+  width: 20px;
+  height: 20px;
+}
+
+.logo span {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-main);
+}
+
+.logo span em {
+  font-style: normal;
+  color: var(--primary);
+}
+
+.mini-header .switch {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+
+.mini-header .switch a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.auth-shell {
+  min-height: calc(100vh - 88px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-visual {
+  background: linear-gradient(160deg, #1e293b 0%, #0f1729 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.auth-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 80% 10%,
+    rgba(37, 99, 235, 0.28),
+    transparent 55%
+  );
+}
+
+.auth-visual > * {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-visual .eyebrow {
+  display: inline-flex;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 14px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.auth-visual h2 {
+  color: #fff;
+  font-size: clamp(26px, 3vw, 36px);
+  margin-top: 20px;
+  max-width: 380px;
+}
+
+.auth-visual p.sub {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 14px;
+  max-width: 360px;
+  font-size: 15px;
+}
+
+.job-card {
+  margin-top: 36px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.job-card .badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.job-card .badge svg {
+  width: 22px;
+  height: 22px;
+  color: var(--secondary);
+}
+
+.job-card h4 {
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.job-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.trust-row {
+  display: flex;
+  gap: 28px;
+  margin-top: auto;
+}
+
+.trust-row div strong {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  display: block;
+  color: #fff;
+}
+
+.trust-row div p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12.5px;
+  margin-top: 4px;
+}
+
+.auth-form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 6vw;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-card .eyebrow {
+  display: inline-flex;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.auth-card h1 {
+  font-size: clamp(26px, 3vw, 32px);
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+.auth-card > p {
+  margin-top: 10px;
+  font-size: 14.5px;
+}
+
+.auth-card > p a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap svg {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+}
+
+.input-wrap input {
+  font-family: "Inter", sans-serif;
+  font-size: 14.5px;
+  color: var(--text-main);
+  padding: 13px 16px 13px 44px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+  width: 100%;
+}
+
+.input-wrap input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.input-wrap input::placeholder {
+  color: #94a3b8;
+}
+
+.input-wrap .toggle-pass {
+  position: absolute;
+  left: auto;
+  right: 15px;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remember input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.row-between a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.otp-note {
+  display: flex;
+  gap: 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.otp-note svg {
+  width: 17px;
+  height: 17px;
+  color: var(--secondary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.otp-note p {
+  font-size: 12.5px;
+  color: var(--text-main);
+}
+
+.bottom-link {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 14.5px;
+}
+
+.bottom-link a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--secondary);
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-top: 18px;
+}
+
+.status-pill svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 920px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-visual {
+    display: none;
+  }
+
+  .auth-form-side {
+    padding: 24px 6vw 64px;
+  }
+}

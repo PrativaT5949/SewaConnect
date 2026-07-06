@@ -1,62 +1,150 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <title>SewaConnect Login</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — HomeFix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+ <link rel="stylesheet" href="../assets/css/style.css">
+ <link rel="stylesheet" href="../assets/css/login.css">
+</head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<body>
+  <div id="header"></div>
 
-    <!-- Bootstrap -->
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="../assets/css/auth.css" />
-  </head>
-
-  <body>
-    <div class="login-container">
-      <div class="card login-card">
-        <div class="card-body p-5">
-          <h2 class="logo text-center">SewaConnect</h2>
-
-          <p class="subtitle text-center">Welcome Back</p>
-
-          <div class="alert alert-danger" id="errorMessage">
-            Invalid email or password.
+  <div class="auth-shell">
+    <div class="auth-visual">
+      <div>
+        <span class="eyebrow">Welcome back</span>
+        <h2>Pick up right where you left off</h2>
+        <p class="sub">
+          Sign in to manage bookings, message your professional, and track
+          upcoming visits.
+        </p>
+        <div class="auth-stats">
+          <div>
+            <strong>500K+</strong>
+            <p>Services completed</p>
           </div>
-
-          <form id="loginForm">
-            <div class="mb-3">
-              <label> Email </label>
-
-              <input type="email" class="form-control" id="email" required />
-            </div>
-
-            <div class="mb-3">
-              <label> Password </label>
-
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                required
-              />
-            </div>
-
-            <button class="btn btn-primary btn-login" type="submit">
-              Login
-            </button>
-          </form>
+          <div>
+            <strong>4.9/5</strong>
+            <p>Average rating</p>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <p>Support available</p>
+          </div>
+        </div>
+      </div>
+      <div class="auth-quote">
+        <p>
+          "HomeFix made booking an electrician so simple — I had someone at my
+          door within hours."
+        </p>
+        <div class="who">
+          <div class="av"></div>
+          <div>
+            <strong>Priya Sharma</strong>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="../assets/js/api.js"></script>
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <span class="eyebrow">Sign in</span>
+        <h1>Welcome back</h1>
+        <p>New to HomeFix? <a href="register.html">Create an account</a></p>
 
-    <script src="../assets/js/login.js"></script>
-  </body>
+        <form>
+          <div class="field-group">
+            <label>Email address</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16v16H4z" stroke-linejoin="round" />
+                <path d="M4 6l8 7 8-7" stroke-linejoin="round" />
+              </svg>
+              <input type="email" placeholder="jane@example.com" required />
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Password</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="10" width="16" height="10" rx="2" />
+                <path d="M8 10V7a4 4 0 018 0v3" />
+              </svg>
+              <input type="password" id="passInput" placeholder="Enter your password" required />
+              <button type="button" class="toggle-pass input-wrap" style="position: absolute" id="togglePass"
+                aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="row-between">
+            <label class="remember"><input type="checkbox" /> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Sign in
+          </button>
+        </form>
+
+        <div class="divider-row">
+          <div class="line"></div>
+          <span>or continue with</span>
+          <div class="line"></div>
+        </div>
+
+        <div class="social-row">
+          <button class="social-btn">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4"
+                d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.7h3.6c2.1-1.9 3.2-4.8 3.2-8z" />
+              <path fill="#34A853"
+                d="M12 23c3 0 5.4-1 7.2-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8C4.1 20.6 7.8 23 12 23z" />
+              <path fill="#FBBC05"
+                d="M6 14.3c-.2-.7-.4-1.4-.4-2.3s.1-1.5.4-2.3V6.9H2.3A11 11 0 001 12c0 1.8.4 3.5 1.3 5.1L6 14.3z" />
+              <path fill="#EA4335"
+                d="M12 5.4c1.6 0 3.1.6 4.3 1.6l3.2-3.2C17.4 2 15 1 12 1 7.8 1 4.1 3.4 2.3 6.9L6 9.7c.9-2.5 3.2-4.3 6-4.3z" />
+            </svg>
+            Google
+          </button>
+          <button class="social-btn">
+            <svg viewBox="0 0 24 24" fill="#1E293B">
+              <path
+                d="M17.1 12.3c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.4 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.3 1.2-2.4-.1 0-2.3-.9-2.3-3.3zM15 5.4c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.5-1.2z" />
+            </svg>
+            Apple
+          </button>
+        </div>
+
+        <p class="bottom-link">
+          Don't have an account? <a href="register.html">Sign up for free</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const togglePass = document.getElementById("togglePass");
+    const passInput = document.getElementById("passInput");
+    togglePass.addEventListener("click", () => {
+      passInput.type = passInput.type === "password" ? "text" : "password";
+    });
+  </script>
+</body>
+
+<div id="footer"></div>
+<script src="../assets/js/main.js"></script>
+
 </html>
